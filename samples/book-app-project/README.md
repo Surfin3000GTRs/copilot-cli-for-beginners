@@ -21,7 +21,8 @@ It can add, remove, and list books. Also mark them as read.
 * `books.py` - BookCollection class with data logic
 * `utils.py` - Helper functions for UI and input
 * `data.json` - Sample book data
-* `tests/test_books.py` - Starter pytest tests
+* `tests/test_books.py` - Starter pytest tests for collection logic
+* `tests/test_utils.py` - Tests for shared CLI display helpers
 
 ---
 

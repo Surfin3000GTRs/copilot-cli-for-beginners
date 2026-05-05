@@ -26,11 +26,14 @@ def get_book_details():
 
 
 def print_books(books):
+    """Display books using the shared CLI output format."""
     if not books:
-        print("No books in your collection.")
+        print("No books found.")
         return
 
-    print("\nYour Books:")
+    print("\nYour Book Collection:\n")
     for index, book in enumerate(books, start=1):
-        status = "✅ Read" if book.read else "📖 Unread"
-        print(f"{index}. {book.title} by {book.author} ({book.year}) - {status}")
+        status = "✓" if book.read else " "
+        print(f"{index}. [{status}] {book.title} by {book.author} ({book.year})")
+
+    print()
