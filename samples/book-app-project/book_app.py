@@ -1,4 +1,6 @@
 import sys
+from collections.abc import Callable
+
 from books import BookCollection
 from utils import print_books
 
@@ -63,20 +65,21 @@ def main() -> None:
         return
 
     command = sys.argv[1].lower()
+    command_handlers: dict[str, Callable[[], None]] = {
+        "list": handle_list,
+        "add": handle_add,
+        "remove": handle_remove,
+        "find": handle_find,
+        "help": show_help,
+    }
 
-    if command == "list":
-        handle_list()
-    elif command == "add":
-        handle_add()
-    elif command == "remove":
-        handle_remove()
-    elif command == "find":
-        handle_find()
-    elif command == "help":
-        show_help()
-    else:
+    handler = command_handlers.get(command)
+    if handler is None:
         print("Unknown command.\n")
         show_help()
+        return
+
+    handler()
 
 
 if __name__ == "__main__":
